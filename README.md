@@ -1,4 +1,4 @@
-## Using Laravel In A Docker Container
+## Using Laravel With Docker
 
 #### Requirements
 
