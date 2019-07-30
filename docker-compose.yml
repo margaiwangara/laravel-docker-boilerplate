@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  # web container
+  web:
+    container_name: web
+    build:
+      context: ./src
+    ports:
+      - 8000:80
+    volumes:
+      - ./src:/var/www
+      - ./storage/app:/var/www/storage/app
+      - ./storage/logs:/var/www/storage/logs
+    networks:
+      - backend
+
+  # db container
+  db:
+    container_name: db
+    image: mysql:5.7
+    env_file:
+      - ./config/db.env
+    volumes:
+      - ./storage/db:/var/lib/mysql
+    networks:
+      - backend
+
+  # phpmyadmin
+  pma:
+    container_name: pma
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - ./config/db.env
+    ports:
+      - 8001:80
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
