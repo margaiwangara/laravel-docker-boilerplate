@@ -9,10 +9,21 @@
 
 Clone the git repo into your project. **Incase you want to create a microservice, all you need is to create a new project inside this repository and configure the container in the docker-compose.yml file**.
 
-After you have cloned the repo, make sure your create a folder called storage in the root folder where src and config folders are.
+After you have cloned the repo, make sure your create a folder called storage in the root folder where src and config folders are, then cd into the src folder and install dependencies with composer
 
 ```
-repo > config > src > **storage** folder will come here > docker-compose.yml
+repo >
+  config
+  src
+  **storage** folder will come here
+  docker-compose.yml
+
+<!-- cd into src folder and run composer install, make sure you have docker installed and running -->
+
+repo >
+  src >
+    <!-- run composer install in here -->
+    > docker run --rm -v ${pwd}:/app composer install
 
 ```
 
